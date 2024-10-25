@@ -210,7 +210,9 @@ class PolyseedMnemonicEntryView(SeedMnemonicEntryView):
         # Attempt to finalize the mnemonic
         try:
             self.controller.jar.convert_pending_mnemonic_to_pending_polyseed()
-        except InvalidSeedException:
+        except InvalidSeedException as e:
+            print(e) # TODO: 2024-10-24, remove, debugging only
+            print(f'pending seed: {' '.join(self.controller.jar.pending_mnemonic)}')  # TODO: remove, debugging only
             return Destination(SeedMnemonicInvalidView, view_args={'polyseed': True})
         return Destination(SeedFinalizeView)
 

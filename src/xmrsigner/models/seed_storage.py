@@ -70,11 +70,11 @@ class SeedJar:
     def get_pending_mnemonic_fingerprint(self, network: str = SettingsConstants.MAINNET) -> str:
         return Seed(self._pending_mnemonic, network=network).fingerprint
 
-    def convert_pending_mnemonic_to_pending_seed(self, network: str = SettingsConstants.MAINNET):
+    def convert_pending_mnemonic_to_pending_seed(self, network: str = SettingsConstants.network_name(SettingsConstants.MAINNET)):
         self.pending_seed = Seed(self._pending_mnemonic, network=network)
         self.discard_pending_mnemonic()
 
-    def convert_pending_mnemonic_to_pending_polyseed(self, network: str = SettingsConstants.MAINNET):
+    def convert_pending_mnemonic_to_pending_polyseed(self, network: str = SettingsConstants.network_name(SettingsConstants.MAINNET)):
         self.pending_seed = PolyseedSeed(self._pending_mnemonic, network=network)
         self.discard_pending_mnemonic()
 

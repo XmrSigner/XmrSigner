@@ -93,7 +93,7 @@ class SettingsConstants:
     def network_name(cls, network_constant: str) -> str:
         if network == SettingsConstants.MAINNET:
             return NET_MAIN
-        elif network == SettingsConstants.TESTNET:
+        if network == SettingsConstants.TESTNET:
             return NET_TEST
         if network == SettingsConstants.STAGENET:
             return NET_STAGE
